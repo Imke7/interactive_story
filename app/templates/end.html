@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Storybook</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            /* Serif font for a classic look */
+            background-color: #fdf6e3;
+            /* Parchment-like background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .book-container {
+            width: 90%;
+            max-width: 1200px;
+            background: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .page {
+            width: 50%;
+            padding: 40px;
+            background: #faf3e3;
+            /* Light parchment color for pages */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Slight inner shadow for depth */
+        }
+
+        .page.left {
+            border-right: 2px solid #ddd;
+            /* Separator between pages */
+        }
+
+        /* Text styling */
+        .line {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+            font-size: 50px;
+        }
+
+        .current-line {
+            font-weight: bold;
+        }
+
+        #text-container {
+            margin-bottom: 20px;
+        }
+
+
+        /* Button styles */
+        button {
+            padding: 10px 20px;
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #b08052;
+        }
+
+        /* Image styling */
+        .page img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Simple loading spinner */
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #d4a373;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Spinner animation */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Book Layout -->
+    <div class="book-container">
+        <!-- Left Page: Text and Buttons -->
+        <div class="page left">
+            <!-- Display text snippets -->
+            <div id="text-container">
+                <div class="line">The End</div>
+            </div>
+
+            <!-- Buttons -->
+            <div id="buttonContainer">
+                <button id="go_to_start" type="button">Go back to the start</button>
+            </div>
+        </div>
+
+        <!-- Right Page: Image -->
+        <div class="page right">
+            <img src="{{ image }}" alt="Story Image">
+        </div>
+    </div>
+
+
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='end.js') }}"></script>
+
+</body>
+
+</html>

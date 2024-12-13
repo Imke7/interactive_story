@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Interactive Story</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* Matching font with the story page */
+            background-color: #fdf6e3; /* Parchment-like background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            background: #faf3e3;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Matching shadow */
+            max-width: 800px;
+            width: 90%;
+        }
+        h1 {
+            color: #d4a373; /* Matching button color for accent */
+        }
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8; /* Increased line height for readability */
+        }
+        button {
+            background-color: #d4a373; /* Matching button style */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b08052; /* Matching hover color */
+        }
+        .permissions {
+            margin-top: 20px;
+        }
+        .permissions p {
+            margin-bottom: 10px;
+        }
+
+        /* Modal Styles */
+        #permission-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #permission-modal p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        #permission-modal button {
+            background-color: #d4a373;
+            color: white;
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #permission-modal button:hover {
+            background-color: #b08052;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to the Interactive Story!</h1>
+        <p>Get ready to embark on an exciting adventure! You’ll be able to make choices using your voice and interact with the story in a whole new way.</p>
+        <p>Before we begin, we need your permission for two things:</p>
+        
+        <div class="permissions">
+            <p><strong>1. Autoplay Permission:</strong> Please enable autoplay in your browser settings (usually found in the top left corner of your screen).</p>            <p><strong>2. Microphone Access</strong>: To let you speak and choose your path, we need access to your microphone. </p>
+            <button onclick="showPermissionModal()">Grant Microphone Permission</button>
+        </div>
+    </div>
+
+    <!-- Permission Modal (pop-up) -->
+    <div id="permission-modal">
+        <p>To continue, please allow this website to autoplay audio and access your microphone.</p>
+        <button onclick="requestPermissions()">Yes, Allow</button>
+        <button onclick="denyPermissions()">No, Deny</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+
+</body>
+</html>
